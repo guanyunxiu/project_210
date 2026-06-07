@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const {
   getRoomList,
+  getRoomDetail,
   createRoom,
   joinRoom,
   toggleReady,
@@ -29,5 +30,7 @@ router.get('/:id/role', auth, getMyRole);
 router.post('/:id/vote', auth, sendVote);
 router.get('/:id/votes', auth, getVotes);
 router.post('/:id/end', auth, endGame);
+
+router.get('/:id', auth, getRoomDetail);
 
 module.exports = router;

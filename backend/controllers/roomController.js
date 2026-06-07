@@ -399,6 +399,59 @@ exports.leaveRoom = async (req, res, next) => {
   }
 };
 
+exports.getRoomDetail = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user.id;
+
+    const room = await Room.findByPk(id, {
+      attributes: ['id', 'name', 'status', 'max_players', 'created_at'],
+      include: [
+        {
+          model: Script,
+          as: 'script',
+          attributes: ['id', 'name', 'category', 'cover_image', 'player_count', 'difficulty', 'duration'],
+          include: [{
+            model: ScriptRole,
+            as: 'roles',
+            attributes: ['id', 'name', 'description', 'avatar', 'gender']
+          }]
+        },
+        {
+          model: User,
+          as: 'host',
+          attributes: ['id', 'nickname', 'avatar']
+        },
+        {
+          model: RoomPlayer,
+          as: 'players',
+          attributes: ['id', 'is_ready', 'is_host', 'joined_at'],
+          include: [
+            {
+              model: User,
+              as: 'user',
+              attributes: ['id', 'nickname', 'avatar', 'gender']
+            },
+            {
+              model: ScriptRole,
+              as: 'role',
+              attributes: ['id', 'name', 'avatar']
+            }
+          ]
+        }
+      ]
+    });
+
+    if (!room) {
+      return res.error('房间不存在', 404);
+    }
+
+    res.success(room, '获取成功');
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.getRoomMessages = async (req, res, next) => {
   try {
     const { id } = req.params;
