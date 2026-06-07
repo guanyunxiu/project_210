@@ -1,0 +1,114 @@
+@primary-color: #6B46C1;
+@bg-color: #F5F5F5;
+@card-bg: #FFFFFF;
+@text-primary: #333333;
+@text-secondary: #666666;
+@text-light: #999999;
+@success-color: #52C41A;
+@warning-color: #FAAD14;
+@error-color: #FF4D4F;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: @bg-color;
+  color: @text-primary;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  min-height: 100vh;
+  background-color: @bg-color;
+}
+
+.page-container {
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.card {
+  background: @card-bg;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.primary-btn {
+  background: @primary-color;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  background: rgba(107, 70, 193, 0.1);
+  color: @primary-color;
+}
+
+:root:root {
+  --van-primary-color: @primary-color;
+  --van-success-color: @success-color;
+  --van-warning-color: @warning-color;
+  --van-danger-color: @error-color;
+  --van-tab-active-text-color: @primary-color;
+  --van-nav-bar-background: @primary-color;
+  --van-nav-bar-title-text-color: #fff;
+  --van-nav-bar-icon-color: #fff;
+  --van-nav-bar-text-color: #fff;
+  --van-button-primary-background: @primary-color;
+  --van-button-primary-border-color: @primary-color;
+  --van-loading-color: @primary-color;
+  --van-tabs-bottom-bar-color: @primary-color;
+  --van-tabbar-item-active-color: @primary-color;
+}
