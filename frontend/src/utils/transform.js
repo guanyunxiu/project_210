@@ -80,8 +80,8 @@ export const transformRoom = (room) => {
 export const transformRoomPlayer = (player) => {
   if (!player) return null
   return {
-    id: player.id,
-    userId: player.user_id || player.userId,
+    id: player.user?.id || player.user_id || player.userId || player.id,
+    userId: player.user_id || player.userId || player.id,
     name: player.user?.nickname || player.name,
     avatar: player.user?.avatar || player.avatar,
     roleId: player.role_id || player.roleId,

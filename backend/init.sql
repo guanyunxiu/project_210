@@ -105,3 +105,12 @@ INSERT INTO script_roles (script_id, name, description, avatar, gender) VALUES
 (10, '伊姆斯', '伪装者，可以伪装成任何人。', 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=actor%20man%20charming&image_size=square', 'male'),
 (10, '优素福', '药剂师，负责配制镇静剂。', 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=indian%20pharmacist%20chemist&image_size=square', 'male'),
 (10, '斋藤', '日本商人，任务委托人。', 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=japanese%20businessman%20rich&image_size=square', 'male');
+
+-- 剧本11: 情书（2人剧本）
+INSERT INTO scripts (id, name, category, description, cover_image, player_count, difficulty, duration, created_at) VALUES
+(11, '情书', 'emotion', '一张跨越时空的情书，连接了两个陌生人的命运。在这个快节奏的时代，你们能否找到属于自己的真爱？', 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=love%20letter%20romantic%20vintage&image_size=portrait_4_3', 2, 'easy', 120, NOW());
+
+-- 剧本11的角色
+INSERT INTO script_roles (script_id, name, description, avatar, gender) VALUES
+(11, '陈默', '性格内向的书店店员，喜欢阅读和写作。某天收到了一封神秘的情书。', 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=shy%20young%20man%20bookstore%20gentle&image_size=square', 'male'),
+(11, '林小雨', '活泼开朗的插画师，对生活充满热情。她一直在寻找那个能听懂她心声的人。', 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=cheerful%20young%20girl%20artist%20smile&image_size=square', 'female');

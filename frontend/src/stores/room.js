@@ -72,6 +72,11 @@ export const useRoomStore = defineStore('room', () => {
     return res
   }
 
+  const unreadyRoomAction = async (id) => {
+    const res = await readyRoom(id)
+    return res
+  }
+
   const startGameAction = async (id) => {
     const res = await startGame(id)
     return res
@@ -99,6 +104,7 @@ export const useRoomStore = defineStore('room', () => {
     joinRoomAction,
     leaveRoomAction,
     readyRoomAction,
+    unreadyRoomAction,
     startGameAction,
     updateRoomFromSocket,
     updateRoomListFromSocket,

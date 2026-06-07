@@ -188,8 +188,8 @@ const isCurrentUser = (player) => {
 const loadRoomDetail = async () => {
   loading.value = true
   try {
-    const res = await roomStore.fetchRoomDetail(roomId.value)
-    room.value = res.data
+    await roomStore.fetchRoomDetail(roomId.value)
+    room.value = roomStore.currentRoom
   } catch (error) {
     console.log('Fetch room detail failed, using mock data:', error)
     const mockRoom = mockRooms.find(r => r.id === Number(roomId.value))
@@ -211,8 +211,8 @@ const initSocket = () => {
   socket.emit('joinRoom', { roomId: roomId.value })
 
   socket.on('roomUpdated', (roomData) => {
-    room.value = roomData
     roomStore.updateRoomFromSocket(roomData)
+    room.value = roomStore.currentRoom
   })
 
   socket.on('playerJoined', (player) => {
